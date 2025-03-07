@@ -1,0 +1,129 @@
+<!DOCTYPE html> //INDICA QUE EL DOCUMENTO ES DE TIPO HTML5
+<html lang="es"> //DEFINE EL IDIOMA ESP
+<head> //CONTIENE METADATOS COMO TÍTULO Y ESTILOS CCS
+    <meta charset="UTF-8"> //PARA SOPORTAR CARACTERES ESPECIALES
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> //SE ADAPTA A DISP. MOVILES
+    <title>VIAJECITO A PARRAS</title> //TÍTULO DE LA PÁGINA EN EL NAVEGADOR
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; //TIPO DE LETRA
+            margin: 0; //MARGEN SUPERIOR
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Contenedor principal */
+        .contenedor {
+            text-align: center;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Título */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        /* Fechas */
+        .fechas {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #bdc3c7;
+        }
+
+        /* Contador */
+        #conteo {
+            font-size: 3em;
+            font-weight: bold;
+            color: #e74c3c;
+            text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+        }
+
+        /* Detalles del contador */
+        #conteo span {
+            font-size: 0.6em;
+            color: #ecf0f1;
+        }
+
+        /* Efecto de brillo */
+        @keyframes brillo {
+            0% { text-shadow: 0 0 10px rgba(231, 76, 60, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(231, 76, 60, 1); }
+            100% { text-shadow: 0 0 10px rgba(231, 76, 60, 0.7); }
+        }
+
+        #conteo {
+            animation: brillo 2s infinite;
+        }
+    </style>
+</head>
+
+//CONTIENE EN CONTENIDO VISIBLE DE LA PÁGINA
+<body>
+    <div class="contenedor"> //CONTENEDOR PRINCIPAL QUE CENTRA Y ORGANIZA EL CONTENIDO
+        <h1>CUENTA REGRESIVA</h1>
+        <div class="fechas"> //MUESTRA LA FECHA DEL VIAJE
+            <p>Fecha del viaje: <strong>15 de marzo de 2025</strong></p>
+        </div>
+        <div id="conteo">Cargando...</div> //AQUÍ SE MOSTRARÁ EL CONTEO REGRESIVO
+    </div>
+
+    <script>
+        // Fecha de inicio (7 de marzo de 2025)
+        const fechaInicio = new Date('2025-03-07T00:00:00');
+
+        // Fecha del viaje (15 de marzo de 2025)
+        const fechaViaje = new Date('2025-03-15T00:00:00');
+
+        function actualizarConteo() {
+            // Obtener la fecha y hora actual
+            const ahora = new Date();
+
+            // Si la fecha actual es anterior al 7 de marzo de 2025, mostrar un mensaje
+            if (ahora < fechaInicio) {
+                document.getElementById('conteo').innerHTML = "El conteo comenzará el <strong>7 de marzo de 2025</strong>.";
+                return;
+            }
+
+            // Calcular la diferencia en milisegundos
+            const diferencia = fechaViaje - ahora;
+
+            // Si la fecha del viaje ya pasó, mostrar un mensaje
+            if (diferencia <= 0) {
+                document.getElementById('conteo').innerHTML = "¡El viaje ya comenzó!";
+                return;
+            }
+
+            // Calcular días, horas, minutos y segundos
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            // Mostrar el resultado
+            document.getElementById('conteo').innerHTML =
+                `Restan: <br>
+                <span>${dias}</span> días <br>
+                <span>${horas}</span> horas <br>
+                <span>${minutos}</span> minutos <br>
+                <span>${segundos}</span> segundos`;
+        }
+
+        // Actualizar el conteo al cargar la página
+        actualizarConteo();
+
+        // Actualizar el conteo cada segundo
+        setInterval(actualizarConteo, 1000);
+    </script>
+</body>
+</html>
