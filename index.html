@@ -1,9 +1,9 @@
-<!DOCTYPE html> //INDICA QUE EL DOCUMENTO ES DE TIPO HTML5
-<html lang="es"> //DEFINE EL IDIOMA ESP
-<head> //CONTIENE METADATOS COMO TÍTULO Y ESTILOS CCS
-    <meta charset="UTF-8"> //PARA SOPORTAR CARACTERES ESPECIALES
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> //SE ADAPTA A DISP. MOVILES
-    <title>VIAJECITO A PARRAS</title> //TÍTULO DE LA PÁGINA EN EL NAVEGADOR
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSADA CABAÑA 2025</title> 
     <style>
         /* Estilos generales */
         body {
@@ -68,30 +68,29 @@
     </style>
 </head>
 
-//CONTIENE EN CONTENIDO VISIBLE DE LA PÁGINA
 <body>
-    <div class="contenedor"> //CONTENEDOR PRINCIPAL QUE CENTRA Y ORGANIZA EL CONTENIDO
-        <h1>CUENTA REGRESIVA</h1>
-        <div class="fechas"> //MUESTRA LA FECHA DEL VIAJE
-            <p>Fecha del viaje: <strong>15 de marzo de 2025</strong></p>
+    <div class="contenedor">
+        <h1>POSADA CABAÑA 2025</h1>
+        <div class="fechas"> 
+            <p>Fecha del viaje: <strong>6 de diciembre de 2025</strong></p>
         </div>
-        <div id="conteo">Cargando...</div> //AQUÍ SE MOSTRARÁ EL CONTEO REGRESIVO
+        <div id="conteo">Cargando...</div> 
     </div>
 
     <script>
-        // Fecha de inicio (7 de marzo de 2025)
-        const fechaInicio = new Date('2025-03-07T00:00:00');
+        // Fecha de inicio (29 de octubre de 2025)
+        const fechaInicio = new Date('2025-10-29T00:00:00');
 
-        // Fecha del viaje (15 de marzo de 2025)
-        const fechaViaje = new Date('2025-03-15T00:00:00');
+        // Fecha del viaje (6 de diciembre de 2025)
+        const fechaViaje = new Date('2025-12-06T00:00:00');
 
         function actualizarConteo() {
             // Obtener la fecha y hora actual
             const ahora = new Date();
 
-            // Si la fecha actual es anterior al 7 de marzo de 2025, mostrar un mensaje
+            // Si la fecha actual es anterior al 29 de octubre de 2025, mostrar un mensaje
             if (ahora < fechaInicio) {
-                document.getElementById('conteo').innerHTML = "El conteo comenzará el <strong>7 de marzo de 2025</strong>.";
+                document.getElementById('conteo').innerHTML = "El conteo comenzará el <strong>29 de octubre de 2025</strong>.";
                 return;
             }
 
